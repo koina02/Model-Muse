@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naomi Elle | Model Muse</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap">
+  <style>
+    :root {
+      --dark: #121212;
+      --taupe: #D8C4B6;
+      --mauve: #B7A6A6;
+      --deep-mauve: #8E7C7C;
+      --dark-brown: #3A2E2A;
+      --gold: #C8B688;
+      --darker: #0a0a0a;
+      --light: #ffffff;
+      --gray: #2a2a2a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    .serif {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(245, 240, 230, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(216, 196, 182, 0.3);
+    }
+    
+    nav a {
+      color: var(--dark-brown);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 1px;
+      background: var(--dark-brown);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 70%;
+    }
+    
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 5%;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(rgba(245, 240, 230, 0.2), rgba(245, 240, 230, 0.9)), 
+                  url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, var(--cream), transparent);
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 400;
+      color: var(--dark-brown);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--deep-mauve);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .scroll-down {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--dark-brown);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .scroll-down::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 50px;
+      background: var(--dark-brown);
+      margin-top: 1rem;
+    }
+    
+    /* Content Sections */
+    section {
+      padding: 6rem 10%;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--dark-brown);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1rem auto 0;
+    }
+    
+    .centered {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      color: var(--deep-mauve);
+      font-size: 1.1rem;
+    }
+    
+    /* Portfolio Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 2/3;
+    }
+    
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .portfolio-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(58, 46, 42, 0.8), transparent);
+      padding: 2rem 1.5rem 1.5rem;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    
+    .portfolio-overlay h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .portfolio-overlay p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* About Section */
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 15px 30px rgba(58, 46, 42, 0.1);
+    }
+    
+    .about-content {
+      flex: 1;
+    }
+    
+    .about-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark-brown);
+    }
+    
+    .about-content p {
+      margin-bottom: 1.5rem;
+      color: var(--deep-mauve);
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--deep-mauve);
+    }
+    
+    /* Bookings Section */
+    .booking-container {
+      max-width: 800px;
+      margin: 3rem auto 0;
+      background: white;
+      padding: 3rem;
+      border-radius: 5px;
+      box-shadow: 0 10px 30px rgba(58, 46, 42, 0.05);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark-brown);
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--taupe);
+      border-radius: 3px;
+      font-family: 'Montserrat', sans-serif;
+      background: rgba(216, 196, 182, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(200, 182, 136, 0.2);
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+    }
+    
+    .submit-btn {
+      background: var(--dark-brown);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    
+    .submit-btn:hover {
+      background: var(--gold);
+      color: var(--dark-brown);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--darker);
+      color: var(--light);
+      padding: 4rem 10% 2rem;
+      margin-top: 4rem;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-col h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .footer-col h3::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 0.5rem;
+    }
+    
+    .footer-col p {
+      margin-bottom: 1rem;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+    
+    .footer-col a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-links a {
+      color: var(--light);
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--gold);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo serif">NE</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="bookings.html">Bookings</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1 class="serif">Naomi Elle</h1>
+    <p>Model | Fashion Enthusiast | Muse</p>
+    <div class="scroll-down">Scroll</div>
+  </header>
+
+  <section id="discover">
+    <h2 class="section-title serif">Discover Her World</h2>
+    <p class="centered">Modeling is more than a look — it's a message. Step into Naomi's visual narrative of elegance and edge.</p>
+    
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fashion Editorial">
+        <div class="portfolio-overlay">
+          <h3 class="serif">Urban Elegance</h3>
+          <p>Editorial for Vogue Italia</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Beauty Campaign">
+        <div class="portfolio-overlay">
+          <h3 class="serif">Natural Beauty</h3>
+          <p>Campaign for Glossier</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Runway">
+        <div class="portfolio-overlay">
+          <h3 class="serif">Runway Muse</h3>
+          <p>Paris Fashion Week 2024</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="background: rgba(216, 196, 182, 0.1);">
+    <h2 class="section-title serif">About Naomi</h2>
+    <p class="centered">With a presence that commands attention and versatility that transcends categories, Naomi brings a unique perspective to every project.</p>
+    
+    <div class="about-container">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Naomi Elle Portrait">
+      </div>
+      <div class="about-content">
+        <h3 class="serif">The Essence of Modern Elegance</h3>
+        <p>Naomi Elle is a London-based model known for her striking features and ability to transform for any creative vision. With roots in both European and African heritage, she brings a unique global perspective to her work.</p>
+        <p>Beginning her career at 18, Naomi has since worked with prestigious brands like Chanel, Dior, and Valentino, as well as emerging designers pushing the boundaries of fashion.</p>
+        
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number serif">8+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number serif">50+</div>
+            <div class="stat-label">Campaigns</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number serif">12</div>
+            <div class="stat-label">Countries</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number serif">5</div>
+            <div class="stat-label">Languages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bookings">
+    <h2 class="section-title serif">Book Naomi</h2>
+    <p class="centered">For booking inquiries, please fill out the form below and Naomi's team will respond within 48 hours.</p>
+    
+    <div class="booking-container">
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">Company/Agency</label>
+            <input type="text" id="company" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="project">Project Type</label>
+          <select id="project" required>
+            <option value="">Select project type</option>
+            <option value="fashion">Fashion Editorial</option>
+            <option value="commercial">Commercial Campaign</option>
+            <option value="runway">Runway Show</option>
+            <option value="beauty">Beauty Campaign</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="details">Project Details</label>
+          <textarea id="details" rows="5" required></textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Proposed Date</label>
+            <input type="date" id="date">
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget">
+              <option value="">Select budget range</option>
+              <option value="1">Under $5,000</option>
+              <option value="2">$5,000 - $10,000</option>
+              <option value="3">$10,000 - $25,000</option>
+              <option value="4">$25,000+</option>
+            </select>
+          </div>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 class="serif">Naomi Elle</h3>
+        <p>Representing the future of fashion with timeless elegance and modern edge.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h3 class="serif">Quick Links</h3>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="portfolio.html">Portfolio</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="bookings.html">Bookings</a></p>
+      </div>
+      
+      <div class="footer-col">
+        <h3 class="serif">Contact</h3>
+        <p>London, UK</p>
+        <p><a href="mailto:naomi@ellemodel.com">naomi@ellemodel.com</a></p>
+        <p>+44 20 7946 0958</p>
+        <p>Represented by Elite London</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Naomi Elle. All rights reserved. | Designed with elegance</p>
+    </div>
+  </footer>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

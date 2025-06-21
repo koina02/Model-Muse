@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Naomi Elle</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap">
+  <style>
+    :root {
+      --dark: #121212;
+      --taupe: #D8C4B6;
+      --mauve: #B7A6A6;
+      --deep-mauve: #8E7C7C;
+      --dark-brown: #3A2E2A;
+      --gold: #C8B688;
+      --darker: #0a0a0a;
+      --light: #ffffff;
+      --gray: #2a2a2a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    .serif {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(245, 240, 230, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(216, 196, 182, 0.3);
+    }
+    
+    nav a {
+      color: var(--dark-brown);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 1px;
+      background: var(--dark-brown);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 70%;
+    }
+    
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+    
+    /* Portfolio Section */
+    section {
+      padding: 8rem 5% 4rem;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--dark);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1rem auto 0;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .gallery img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.5s ease, opacity 0.3s ease;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .gallery img:hover {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+    
+    /* Portfolio Categories */
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    
+    .category-btn {
+      background: transparent;
+      border: 1px solid var(--dark);
+      color: var(--dark);
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .category-btn.active,
+    .category-btn:hover {
+      background: var(--dark);
+      color: var(--light);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--darker);
+      color: var(--light);
+      padding: 4rem 10% 2rem;
+      margin-top: 4rem;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-col h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .footer-col h3::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 0.5rem;
+    }
+    
+    .footer-col p {
+      margin-bottom: 1rem;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+    
+    .footer-col a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-links a {
+      color: var(--light);
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--gold);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo serif">NE</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="bookings.html">Bookings</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2 class="section-title serif">Portfolio</h2>
+    
+    <div class="categories">
+      <button class="category-btn active">All</button>
+      <button class="category-btn">Editorial</button>
+      <button class="category-btn">Runway</button>
+      <button class="category-btn">Commercial</button>
+      <button class="category-btn">Beauty</button>
+    </div>
+    
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Editorial shoot">
+      <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Runway shot">
+      <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Commercial ad">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Street style">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Beauty closeup">
+      <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Brand shoot">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Beauty editorial">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fashion campaign">
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 class="serif">Naomi Elle</h3>
+        <p>Representing the future of fashion with timeless elegance and modern edge.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h3 class="serif">Quick Links</h3>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="portfolio.html">Portfolio</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="bookings.html">Bookings</a></p>
+      </div>
+      
+      <div class="footer-col">
+        <h3 class="serif">Contact</h3>
+        <p>London, UK</p>
+        <p><a href="mailto:naomi@ellemodel.com">naomi@ellemodel.com</a></p>
+        <p>+44 20 7946 0958</p>
+        <p>Represented by Elite London</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Naomi Elle. All rights reserved. | Designed with elegance</p>
+    </div>
+  </footer>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
+  <script>
+    // Simple category filtering
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelector('.category-btn.active').classList.remove('active');
+        this.classList.add('active');
+        // In a real implementation, you would filter the gallery here
+      });
+    });
+  </script>
+</body>
+</html>

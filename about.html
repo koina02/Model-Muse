@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Naomi Elle</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap">
+  <style>
+    :root {
+      --dark: #121212;
+      --darker: #0a0a0a;
+      --light: #ffffff;
+      --gold: #c8b688;
+      --gray: #2a2a2a;
+      --cream: #f5f0e6;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    .serif {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(245, 240, 230, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 1px;
+      background: var(--dark);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 70%;
+    }
+    
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+    
+    /* Main Content */
+    section {
+      padding: 8rem 5% 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--dark);
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1rem auto 0;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+    
+    /* About Section */
+    .about-container {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about-image::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: -20px;
+      bottom: -20px;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      z-index: -1;
+    }
+    
+    .about-content {
+      flex: 1;
+    }
+    
+    .about-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+    
+    .about-content p {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .stat-item {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+    }
+    
+    .model-specs {
+      margin-top: 2rem;
+    }
+    
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .spec-item {
+      display: flex;
+      margin-bottom: 1rem;
+    }
+    
+    .spec-label {
+      font-weight: 600;
+      min-width: 100px;
+      color: var(--dark);
+    }
+    
+    .spec-value {
+      color: var(--gray);
+    }
+    
+    /* Career Highlights */
+    .highlights {
+      margin-top: 3rem;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .highlights h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .highlights h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+    }
+    
+    .highlight-item {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--gold);
+    }
+    
+    .highlight-year {
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    
+    .highlight-title {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    
+    .highlight-description {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--darker);
+      color: var(--light);
+      padding: 4rem 10% 2rem;
+      margin-top: 4rem;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-col h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .footer-col h3::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 0.5rem;
+    }
+    
+    .footer-col p {
+      margin-bottom: 1rem;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+    
+    .footer-col a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-links a {
+      color: var(--light);
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--gold);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+      }
+      
+      .stats,
+      .specs-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo serif">NE</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="bookings.html">Bookings</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2 class="section-title serif">About Naomi</h2>
+    <p class="section-subtitle">Commanding presence meets effortless elegance - discover the woman behind the muse</p>
+    
+    <div class="about-container">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Naomi Elle Portrait">
+      </div>
+      <div class="about-content">
+        <h3 class="serif">The Essence of Modern Elegance</h3>
+        <p>Naomi Elle is a Kenyan-born fashion model whose striking features and versatile talent have graced international runways, editorial spreads, and advertising campaigns worldwide. With roots in Nairobi's vibrant fashion scene, Naomi brings a unique global perspective to every project.</p>
+        <p>Her journey began at 18 when she was discovered during a local fashion week. Since then, Naomi has worked with prestigious brands including Louis Vuitton, Dior, and Valentino, as well as emerging African designers pushing the boundaries of contemporary fashion.</p>
+        
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number serif">5+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number serif">30+</div>
+            <div class="stat-label">Countries</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number serif">50+</div>
+            <div class="stat-label">Campaigns</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number serif">12</div>
+            <div class="stat-label">Languages</div>
+          </div>
+        </div>
+        
+        <div class="model-specs">
+          <h4 class="serif">Model Specifications</h4>
+          <div class="specs-grid">
+            <div class="spec-item">
+              <div class="spec-label">Height:</div>
+              <div class="spec-value">5'9" / 175cm</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Bust:</div>
+              <div class="spec-value">32" / 81cm</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Waist:</div>
+              <div class="spec-value">24" / 61cm</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Hips:</div>
+              <div class="spec-value">35" / 89cm</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Hair:</div>
+              <div class="spec-value">Black</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Eyes:</div>
+              <div class="spec-value">Brown</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Shoe:</div>
+              <div class="spec-value">EU 39 / US 8</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Dress:</div>
+              <div class="spec-value">US 4 / EU 34</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="highlights">
+      <h3 class="serif">Career Highlights</h3>
+      
+      <div class="highlight-item">
+        <div class="highlight-year">2023</div>
+        <div class="highlight-title">Vogue Italia Cover</div>
+        <div class="highlight-description">Featured as one of "Africa's New Generation of Supermodels"</div>
+      </div>
+      
+      <div class="highlight-item">
+        <div class="highlight-year">2022</div>
+        <div class="highlight-title">Paris Fashion Week Debut</div>
+        <div class="highlight-description">Walked for 3 major houses including Dior and Balmain</div>
+      </div>
+      
+      <div class="highlight-item">
+        <div class="highlight-year">2021</div>
+        <div class="highlight-title">L'Oréal Paris Ambassador</div>
+        <div class="highlight-description">Became the face of their True Match campaign in Africa</div>
+      </div>
+      
+      <div class="highlight-item">
+        <div class="highlight-year">2020</div>
+        <div class="highlight-title">African Fashion International Winner</div>
+        <div class="highlight-description">Named Model of the Year at AFI's prestigious awards</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 class="serif">Naomi Elle</h3>
+        <p>Representing the future of fashion with timeless elegance and modern edge.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h3 class="serif">Quick Links</h3>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="portfolio.html">Portfolio</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="bookings.html">Bookings</a></p>
+      </div>
+      
+      <div class="footer-col">
+        <h3 class="serif">Contact</h3>
+        <p>Nairobi, Kenya</p>
+        <p><a href="mailto:naomi@ellemodel.com">naomi@ellemodel.com</a></p>
+        <p>+254 700 123 456</p>
+        <p>Represented by Elite Model Africa</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Naomi Elle. All rights reserved. | Designed with elegance</p>
+    </div>
+  </footer>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
