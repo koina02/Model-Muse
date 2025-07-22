@@ -45,6 +45,7 @@ This project is licensed under the [MIT License](LICENSE).
 📧 koinaobedian@gmail.com  
 📱 +254 745 594 443  
 🌐 [GitHub Profile](https://github.com/koina02)
+
 https://koina02.github.io/Model-Muse/ -- Site Link "Model Muse"
 ---
 
